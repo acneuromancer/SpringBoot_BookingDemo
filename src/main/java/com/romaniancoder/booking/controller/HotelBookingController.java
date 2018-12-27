@@ -1,7 +1,7 @@
 package com.romaniancoder.booking.controller;
 
 import com.romaniancoder.booking.domain.HotelBooking;
-import com.romaniancoder.booking.repository.HotelBookingRepository;
+import com.romaniancoder.booking.service.HotelBookingService;
 import java.util.List;
 import org.jsondoc.core.annotation.Api;
 import org.jsondoc.core.annotation.ApiMethod;
@@ -28,31 +28,31 @@ import org.springframework.web.bind.annotation.RestController;
 )
 public class HotelBookingController {
     
-    private HotelBookingRepository repo;
+    private HotelBookingService service;
 
     @Autowired
-    public HotelBookingController(HotelBookingRepository repo) {
-        this.repo = repo;
+    public HotelBookingController(HotelBookingService repo) {
+        this.service = repo;
     }
     
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ApiMethod(description = "Get all hotel bookings from the database.")
     public List<HotelBooking> getAll() {
-        return repo.findAll();
+        return service.findAll();
     }
     
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ApiMethod(description = "Create a hotel booking and save it to the database.")
     public List<HotelBooking> create(@RequestBody HotelBooking hotelBooking) {
-        repo.save(hotelBooking);
-        return repo.findAll();
+        service.save(hotelBooking);
+        return service.findAll();
     }
     
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     @ApiMethod(description = "Remove the hotel booking with the provided ID from the database.")
     public List<HotelBooking> remove (@ApiPathParam(name="id") @PathVariable long id) {
-        repo.deleteById(id);
-        return repo.findAll();
+        service.deleteById(id);
+        return service.findAll();
     }
     
 }
