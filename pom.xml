@@ -41,6 +41,12 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+                <!-- https://mvnrepository.com/artifact/org.jsondoc/jsondoc-core -->
+                <dependency>
+                    <groupId>org.jsondoc</groupId>
+                    <artifactId>jsondoc-core</artifactId>
+                    <version>1.2.19</version>
+                </dependency>
 		<!-- dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
