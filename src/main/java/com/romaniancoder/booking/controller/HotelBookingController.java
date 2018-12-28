@@ -55,4 +55,10 @@ public class HotelBookingController {
         return service.findAll();
     }
     
+    @RequestMapping(value = "/affordable/{price}", method=RequestMethod.GET)
+    @ApiMethod(description = "Get all hotel bookings where the price per night is less than the provided value.")
+    public List<HotelBooking> getAffordable(@ApiPathParam(name = "price") @PathVariable double price) {
+        return service.findByPricePerNightLessThan(price);
+    }
+    
 }

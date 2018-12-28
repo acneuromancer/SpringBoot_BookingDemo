@@ -6,6 +6,7 @@
 package com.romaniancoder.booking.repository;
 
 import com.romaniancoder.booking.domain.HotelBooking;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,4 +18,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface HotelBookingRepository extends JpaRepository<HotelBooking, Long>{
 
+    List<HotelBooking> findByPricePerNightLessThan(double price);
+    
 }

@@ -29,5 +29,9 @@ public class HotelBookingService {
     public void deleteById(long id) {
         repo.deleteById(id);
     }
+
+    public List<HotelBooking> findByPricePerNightLessThan(double price) {
+        return repo.findByPricePerNightLessThan(price);
+    }
     
 }
